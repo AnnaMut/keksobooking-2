@@ -4,3 +4,4 @@ let rrr = 5;
 let code  = jjjjj;
 
 let tttt = 6666;
+const DEV = 5;
