@@ -99,6 +99,9 @@ const TITLE = ['welcome to our palace', 'welcome to our flat', 'welcome to our h
 const TYPE = ['palace', 'flat', 'house', 'bungalow', 'hotel'];
 const CHECKINANDOUT = ['12:00', '13:00', '14:00'];
 const DESCRIPTION = ['such a nice palace', 'such a nice flat', 'such a nice house', 'such a nice bungalow', 'such a nice hotel'];
+const FEATURES = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
+const PHOTOS = ['https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg', 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg', 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg'];
+
 
 const createAutorNumber  = (len) => {
   const arrAutorNumber = [];
@@ -114,12 +117,21 @@ const createAutorNumber  = (len) => {
   return arrAutorNumber;
 };
 
-const numAratar = createAutorNumber(10);
+const NUMAVATAR = createAutorNumber(10);
+const RANDOMNUMARRAY =  randomNumber (1, 5);
+
+const createArrStringNoRepeat = ([...source], maxLength) => Array.from(
+  { length: Math.min(source.length, 1 + Math.random() * maxLength | 0) },
+  () => source.splice(Math.random() * source.length | 0, 1)[0]
+);
+
+const createArrString = (source, maxLength) =>
+  [...Array(1 + Math.random() * maxLength | 0)].map(() => source[Math.random() * source.length | 0]);
 
 
 const createAdvert = () => ({
   author: {
-    avatar:  `img/avatars/user${numAratar[randomNumber (0, 9)]}.png`
+    avatar:  `img/avatars/user${NUMAVATAR[randomNumber (0, 9)]}.png`
   },
   offer: {
     title: TITLE[randomNumber (0, 4)],
@@ -130,9 +142,9 @@ const createAdvert = () => ({
     guests: randomNumber (1, 100),
     checkin: CHECKINANDOUT[randomNumber (0, 2)],
     checkout: CHECKINANDOUT[randomNumber (0, 2)],
-    //features, массив строк — массив случайной длины из значений: wifi, dishwasher, parking, washer, elevator, conditioner. Значения не должны повторяться.
+    features: createArrStringNoRepeat(FEATURES, RANDOMNUMARRAY),
     description: DESCRIPTION[randomNumber (0, 4)],
-    //photos, массив строк — массив случайной длины из значений: https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg, https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg, https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg.
+    photos: createArrString(PHOTOS, RANDOMNUMARRAY),
     location: {
       lat: floatRandomNumber (35.65000, 35.70000, 5),
       lng: floatRandomNumber (139.70000, 39.80000, 5)
