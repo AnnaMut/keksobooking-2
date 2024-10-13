@@ -95,18 +95,63 @@ stringLength('testtesttesttest',566);
 // function checkStringLength (string, length) {
 //  return string.length <= length;
 //}
-
+const TITLE = ['welcome to our palace', 'welcome to our flat', 'welcome to our house', 'welcome to our bungalow', 'welcome to our hotel'];
 const TYPE = ['palace', 'flat', 'house', 'bungalow', 'hotel'];
-const OBJECTSARRAY = [];
+const CHECKINANDOUT = ['12:00', '13:00', '14:00'];
+const DESCRIPTION = ['such a nice palace', 'such a nice flat', 'such a nice house', 'such a nice bungalow', 'such a nice hotel'];
 
-const createAdvert = () => {
-  return {
-    author: {avatar: ''},
-    coatColor: '',
-    eyesColor: '',
-  };
+const createAutorNumber  = (len) => {
+  const arrAutorNumber = [];
+  for(let i = 1;  i <= len; i++) {
+    if (String(i).length === 1) {
+      const num = `0${i}`;
+      arrAutorNumber.push(num);
+    }  else {
+      const num = `${i}`;
+      arrAutorNumber.push(num);
+    }
+  }
+  return arrAutorNumber;
 };
 
+const numAratar = createAutorNumber(10);
+
+
+const createAdvert = () => ({
+  author: {
+    avatar:  `img/avatars/user${numAratar[randomNumber (0, 9)]}.png`
+  },
+  offer: {
+    title: TITLE[randomNumber (0, 4)],
+    address: `${floatRandomNumber (35.65000, 35.70000, 5)},${floatRandomNumber (139.70000, 39.80000, 5)}`,
+    price: randomNumber (1, 400000),
+    type: TYPE[randomNumber (0, 4)],
+    rooms: randomNumber (1, 40),
+    guests: randomNumber (1, 100),
+    checkin: CHECKINANDOUT[randomNumber (0, 2)],
+    checkout: CHECKINANDOUT[randomNumber (0, 2)],
+    //features, массив строк — массив случайной длины из значений: wifi, dishwasher, parking, washer, elevator, conditioner. Значения не должны повторяться.
+    description: DESCRIPTION[randomNumber (0, 4)],
+    //photos, массив строк — массив случайной длины из значений: https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg, https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg, https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg.
+    location: {
+      lat: floatRandomNumber (35.65000, 35.70000, 5),
+      lng: floatRandomNumber (139.70000, 39.80000, 5)
+    }
+  }
+});
+
+
+const createContactsArray = (len) => {
+  const arrAdvert = [];
+  for(let i = 1;  i <= len; i++) {
+    arrAdvert.push(createAdvert(len));
+  }
+  return arrAdvert;
+};
+
+const contacts = createContactsArray(10);
+
+console.log(contacts);
 /*создания массива из 10 сгенерированных JS-объектов. Каждый объект массива — описание похожего объявления неподалёку.
 
 Структура каждого объекта должна быть следующей:
