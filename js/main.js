@@ -194,10 +194,7 @@ features, массив строк — массив случайной длины
 description, строка — описание помещения. Придумайте самостоятельно.
 
 photos, массив строк — массив случайной длины из значений: https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg, https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg, https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg.
-
 location, объект — местоположение в виде географических координат. Состоит из двух полей:
-
 lat, число с плавающей точкой — широта, случайное значение от 35.65000 до 35.70000.
-
 lng, число с плавающей точкой — долгота, случайное значение от 139.70000 до 139.80000.*/
 
